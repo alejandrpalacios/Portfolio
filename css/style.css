@@ -249,6 +249,41 @@ button { font-family: var(--font-main); }
     width: 100%;
 }
 
+/* ── Switcher de idioma ── */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: var(--space-md);
+}
+
+.lang-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.lang-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* Idioma actualmente seleccionado */
+.lang-btn.active {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: var(--color-accent-dim);
+}
+
 /* ── Hamburguesa (solo en móvil) ── */
 .hamburger {
     display: none;

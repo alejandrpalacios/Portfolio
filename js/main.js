@@ -76,51 +76,61 @@ function updateActiveNavLink() {
 
 /* ============================================================
    4. TYPEWRITER — Efecto de escritura/borrado en el hero
-   Cicla por el array 'roles' escribiendo y borrando cada texto.
+   Lee los roles desde window.translations[window.currentLang]
+   para respetar el idioma activo en todo momento.
+   Expone window.restartTypewriter para que i18n.js lo llame
+   cuando el usuario cambia de idioma.
 ============================================================ */
 const dynamicRole = document.getElementById('dynamicRole');
 
-// Edita este array con tus roles o títulos reales
-const roles = [
-    'Developer',
-    'Frontend Developer',
-    'Problem Solver',
-    'Tech Enthusiast',
-];
+let roleIndex      = 0;
+let charIndex      = 0;
+let isDeleting     = false;
+let typewriterTimeout = null; // Referencia al setTimeout activo
 
-let roleIndex  = 0;     // Índice del rol actual en el array
-let charIndex  = 0;     // Posición del carácter actual
-let isDeleting = false; // true cuando está borrando, false cuando escribe
+/* Devuelve el array de roles del idioma activo */
+function getRoles() {
+    const lang = window.currentLang || 'en';
+    return (window.translations && window.translations[lang])
+        ? window.translations[lang].hero_roles
+        : ['Developer', 'Frontend Developer', 'Problem Solver', 'Tech Enthusiast'];
+}
 
 function typeWriter() {
-    const currentRole = roles[roleIndex];
+    const roles       = getRoles();
+    const currentRole = roles[roleIndex % roles.length];
 
     if (isDeleting) {
-        // Borrando: reduce un carácter
         dynamicRole.textContent = currentRole.slice(0, charIndex - 1);
         charIndex--;
     } else {
-        // Escribiendo: agrega un carácter
         dynamicRole.textContent = currentRole.slice(0, charIndex + 1);
         charIndex++;
     }
 
-    // Velocidades distintas para escribir (más lento) y borrar (más rápido)
     let delay = isDeleting ? 60 : 100;
 
     if (!isDeleting && charIndex === currentRole.length) {
-        // Terminó de escribir → pausa antes de empezar a borrar
         delay = 2000;
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
-        // Terminó de borrar → pasa al siguiente rol
         isDeleting = false;
         roleIndex  = (roleIndex + 1) % roles.length;
         delay = 400;
     }
 
-    setTimeout(typeWriter, delay);
+    typewriterTimeout = setTimeout(typeWriter, delay);
 }
+
+/* Reinicia el typewriter desde cero — llamado por i18n.js al cambiar idioma */
+window.restartTypewriter = function () {
+    if (typewriterTimeout) clearTimeout(typewriterTimeout);
+    dynamicRole.textContent = '';
+    roleIndex  = 0;
+    charIndex  = 0;
+    isDeleting = false;
+    typewriterTimeout = setTimeout(typeWriter, 400);
+};
 
 
 /* ============================================================
@@ -217,17 +227,25 @@ contactForm.addEventListener('submit', (e) => {
     clearError('email',   'emailError');
     clearError('message', 'messageError');
 
+    // Lee los mensajes de error en el idioma activo
+    const t   = (window.translations && window.translations[window.currentLang]) || {};
+    const err = {
+        name:    t.error_name    || 'Name must be at least 2 characters.',
+        email:   t.error_email   || 'Please enter a valid email.',
+        message: t.error_message || 'Message must be at least 10 characters.',
+    };
+
     // Validaciones
     if (name.length < 2) {
-        showError('name', 'nameError', 'El nombre debe tener al menos 2 caracteres.');
+        showError('name', 'nameError', err.name);
         isValid = false;
     }
     if (!isValidEmail(email)) {
-        showError('email', 'emailError', 'Ingresa un email válido.');
+        showError('email', 'emailError', err.email);
         isValid = false;
     }
     if (message.length < 10) {
-        showError('message', 'messageError', 'El mensaje debe tener al menos 10 caracteres.');
+        showError('message', 'messageError', err.message);
         isValid = false;
     }
 
@@ -288,5 +306,8 @@ window.addEventListener('scroll', handleScroll, { passive: true });
     handleBackToTop();
 
     // Inicia el efecto typewriter con un pequeño delay inicial
-    setTimeout(typeWriter, 800);
+    // (i18n.js puede llamar window.restartTypewriter si carga antes)
+    if (!dynamicRole.textContent) {
+        typewriterTimeout = setTimeout(typeWriter, 800);
+    }
 })();
