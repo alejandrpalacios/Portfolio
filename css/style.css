@@ -422,6 +422,13 @@ button { font-family: var(--font-main); }
     align-items: center;
 }
 
+/* Sin foto: texto ocupa todo el ancho centrado */
+.about-content.about-no-photo {
+    grid-template-columns: 1fr;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
 /* Wrapper con borde decorativo de degradado */
 .about-image-wrapper {
     position: relative;
