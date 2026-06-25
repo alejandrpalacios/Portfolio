@@ -258,7 +258,7 @@ contactForm.addEventListener('submit', (e) => {
         submitBtn.disabled  = true;
         btnSpan.textContent = t2.contact_sending || 'Sending...';
 
-        fetch('https://formspree.io/f/REPLACE_WITH_YOUR_ID', {
+        fetch('https://formspree.io/f/xjgqyeqb', {
             method:  'POST',
             body:    new FormData(contactForm),
             headers: { 'Accept': 'application/json' }
