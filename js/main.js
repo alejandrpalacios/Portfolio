@@ -297,10 +297,40 @@ window.addEventListener('scroll', handleScroll, { passive: true });
 
 
 /* ============================================================
+   11. SCROLL MEMORY — Guarda y restaura la posición de scroll
+   Al hacer click en el botón del CV se guarda window.scrollY
+   en localStorage. Al volver a index.html se restaura y se borra
+   la clave para que no afecte recargas normales.
+============================================================ */
+const cvBtn = document.querySelector('[data-i18n-href="cv_url"]');
+
+if (cvBtn) {
+    // Guarda el scroll justo antes de navegar al CV
+    cvBtn.addEventListener('click', () => {
+        localStorage.setItem('portfolio_scroll', window.scrollY);
+    });
+}
+
+function restoreScroll() {
+    const saved = localStorage.getItem('portfolio_scroll');
+    if (saved === null) return;
+
+    // Borra la clave antes de scrollear para que solo se aplique una vez
+    localStorage.removeItem('portfolio_scroll');
+
+    // 'instant' evita la animación suave al restaurar (se vería raro)
+    window.scrollTo({ top: parseInt(saved, 10), behavior: 'instant' });
+}
+
+
+/* ============================================================
    INICIALIZACIÓN — Se ejecuta al cargar la página
 ============================================================ */
 (function init() {
-    // Ejecuta el estado inicial de scroll (por si la página carga a la mitad)
+    // Restaura posición de scroll si venimos del CV
+    restoreScroll();
+
+    // Ejecuta el estado inicial de scroll (navbar, reveal, back-to-top)
     handleNavbarScroll();
     revealOnScroll();
     handleBackToTop();
