@@ -572,11 +572,11 @@ button { font-family: var(--font-main); }
     background-color: var(--color-accent-dim);
 }
 
-/* Grid de cards de proyectos */
+/* Grid de cards de proyectos — 4 columnas fijas en desktop */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: var(--space-xl);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
 }
 
 .project-card {
@@ -872,6 +872,9 @@ button { font-family: var(--font-main); }
     }
     .about-stats { justify-content: center; }
 
+    /* Proyectos: 2 columnas en tablet */
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+
     /* Contacto: de 2 columnas a 1 */
     .contact-content { grid-template-columns: 1fr; }
     .contact-socials  { justify-content: center; }
@@ -914,8 +917,9 @@ button { font-family: var(--font-main); }
         align-items: center;
     }
 
-    /* Proyectos: 1 columna */
+    /* Proyectos: 1 columna en móvil */
     .projects-grid { grid-template-columns: 1fr; }
+
 
     /* Back-to-top en esquina más cercana al borde */
     .back-to-top {
