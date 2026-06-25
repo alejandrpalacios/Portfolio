@@ -467,10 +467,13 @@
                         <span data-i18n="contact_submit">Send message</span>
                     </button>
 
-                    <!-- Mensaje de éxito; JS lo muestra/oculta con el atributo hidden -->
                     <div class="form-success" id="formSuccess" hidden>
                         <i class="fas fa-check-circle"></i>
                         <span data-i18n="contact_success">Message sent successfully!</span>
+                    </div>
+                    <div class="form-success form-send-error" id="formError" hidden>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span data-i18n="contact_error">Something went wrong. Please try again.</span>
                     </div>
 
                 </form>

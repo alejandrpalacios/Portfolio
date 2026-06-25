@@ -87,8 +87,10 @@ const translations = {
         contact_ph_email:   'your@email.com',
         contact_ph_subject: 'How can I help you?',
         contact_ph_message: 'Tell me about your project...',
-        contact_submit:  'Send message',
-        contact_success: 'Message sent successfully!',
+        contact_submit:   'Send message',
+        contact_sending:  'Sending...',
+        contact_success:  'Message sent successfully!',
+        contact_error:    'Something went wrong. Please try again.',
 
         // Footer
         footer_made_by: 'Designed and developed by',
@@ -164,8 +166,10 @@ const translations = {
         contact_ph_email:   'tu@email.com',
         contact_ph_subject: '¿En qué te puedo ayudar?',
         contact_ph_message: 'Cuéntame sobre tu proyecto...',
-        contact_submit:  'Enviar mensaje',
-        contact_success: '¡Mensaje enviado correctamente!',
+        contact_submit:   'Enviar mensaje',
+        contact_sending:  'Enviando...',
+        contact_success:  '¡Mensaje enviado correctamente!',
+        contact_error:    'Algo salió mal. Por favor intenta de nuevo.',
 
         footer_made_by: 'Diseñado y desarrollado por',
         footer_rights:  'Todos los derechos reservados',
@@ -239,8 +243,10 @@ const translations = {
         contact_ph_email:   'votre@email.com',
         contact_ph_subject: 'Comment puis-je vous aider ?',
         contact_ph_message: 'Parlez-moi de votre projet...',
-        contact_submit:  'Envoyer le message',
-        contact_success: 'Message envoyé avec succès !',
+        contact_submit:   'Envoyer le message',
+        contact_sending:  'Envoi en cours...',
+        contact_success:  'Message envoyé avec succès !',
+        contact_error:    "Une erreur s'est produite. Veuillez réessayer.",
 
         footer_made_by: 'Conçu et développé par',
         footer_rights:  'Tous droits réservés',

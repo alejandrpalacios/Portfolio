@@ -196,6 +196,7 @@ filterBtns.forEach(btn => {
 ============================================================ */
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
+const formError   = document.getElementById('formError');
 
 /* Valida formato básico de email con regex */
 function isValidEmail(email) {
@@ -250,11 +251,37 @@ contactForm.addEventListener('submit', (e) => {
     }
 
     if (isValid) {
-        // Aquí se conectaría con el servicio de email real
-        contactForm.reset();
-        formSuccess.hidden = false;
-        // Oculta el mensaje de éxito tras 5 segundos
-        setTimeout(() => { formSuccess.hidden = true; }, 5000);
+        const submitBtn = contactForm.querySelector('[type="submit"]');
+        const btnSpan   = submitBtn.querySelector('span');
+        const t2 = (window.translations && window.translations[window.currentLang]) || {};
+
+        submitBtn.disabled  = true;
+        btnSpan.textContent = t2.contact_sending || 'Sending...';
+
+        fetch('https://formspree.io/f/REPLACE_WITH_YOUR_ID', {
+            method:  'POST',
+            body:    new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(res => {
+            if (res.ok) {
+                contactForm.reset();
+                formSuccess.hidden = false;
+                formError.hidden   = true;
+                setTimeout(() => { formSuccess.hidden = true; }, 5000);
+            } else {
+                formError.hidden   = false;
+                formSuccess.hidden = true;
+            }
+        })
+        .catch(() => {
+            formError.hidden   = false;
+            formSuccess.hidden = true;
+        })
+        .finally(() => {
+            submitBtn.disabled  = false;
+            btnSpan.textContent = t2.contact_submit || 'Send message';
+        });
     }
 });
 
