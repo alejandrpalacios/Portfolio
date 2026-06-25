@@ -1,0 +1,883 @@
+/* ============================================================
+   VARIABLES GLOBALES
+   Paleta de colores, tipografías y espaciado del portafolio.
+   Modificar estas variables cambia el tema en todo el sitio.
+============================================================ */
+:root {
+    /* ── Colores de fondo ── */
+    --color-bg:           #0a0e1a;   /* Fondo principal (azul muy oscuro) */
+    --color-bg-secondary: #111827;   /* Fondo de secciones alternas */
+    --color-bg-card:      #1a2035;   /* Fondo de cards y form inputs */
+
+    /* ── Color de acento (cyan) ── */
+    --color-accent:     #64ffda;
+    --color-accent-dim: rgba(100, 255, 218, 0.1); /* Acento semitransparente */
+
+    /* ── Texto ── */
+    --color-text:           #ccd6f6; /* Texto general */
+    --color-text-secondary: #8892b0; /* Texto secundario / labels */
+    --color-text-heading:   #e6f1ff; /* Títulos y encabezados */
+
+    /* ── Bordes y sombras ── */
+    --color-border:  rgba(255, 255, 255, 0.08);
+    --shadow-card:   0 4px 24px rgba(0, 0, 0, 0.4);
+    --shadow-hover:  0 8px 32px rgba(100, 255, 218, 0.15);
+
+    /* ── Tipografía ── */
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+
+    /* ── Escala de fuentes ── */
+    --fs-xs:   0.75rem;   /*  12px */
+    --fs-sm:   0.875rem;  /*  14px */
+    --fs-base: 1rem;      /*  16px */
+    --fs-lg:   1.125rem;  /*  18px */
+    --fs-xl:   1.25rem;   /*  20px */
+    --fs-2xl:  1.5rem;    /*  24px */
+    --fs-3xl:  2rem;      /*  32px */
+    --fs-4xl:  2.5rem;    /*  40px */
+    --fs-5xl:  3.5rem;    /*  56px */
+
+    /* ── Espaciado ── */
+    --space-xs:  0.5rem;   /*  8px */
+    --space-sm:  1rem;     /* 16px */
+    --space-md:  1.5rem;   /* 24px */
+    --space-lg:  2rem;     /* 32px */
+    --space-xl:  3rem;     /* 48px */
+    --space-2xl: 5rem;     /* 80px */
+
+    /* ── Bordes redondeados ── */
+    --radius-sm:   4px;
+    --radius-md:   8px;
+    --radius-lg:   16px;
+    --radius-full: 9999px;
+
+    /* ── Transiciones ── */
+    --transition:      all 0.3s ease;
+    --transition-slow: all 0.6s ease;
+
+    /* ── Altura del navbar fijo ── */
+    --navbar-height: 70px;
+}
+
+
+/* ============================================================
+   RESET Y ESTILOS BASE
+   Normaliza el comportamiento entre navegadores.
+============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Compensa el navbar fijo al navegar con anclas */
+    scroll-padding-top: var(--navbar-height);
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal por animaciones */
+}
+
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-main); }
+
+
+/* ============================================================
+   UTILITARIOS REUTILIZABLES
+============================================================ */
+
+/* Contenedor centrado con ancho máximo */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+/* Color de acento en cualquier elemento */
+.accent { color: var(--color-accent); }
+
+/* Padding vertical estándar para todas las secciones */
+.section { padding: var(--space-2xl) 0; }
+
+/* Alterna el fondo en secciones pares para separación visual */
+.section:nth-child(even) {
+    background-color: var(--color-bg-secondary);
+}
+
+/* Título principal de cada sección */
+.section-title {
+    font-size: var(--fs-3xl);
+    color: var(--color-text-heading);
+    text-align: center;
+    margin-bottom: var(--space-xs);
+}
+
+/* Subtítulo descriptivo debajo del título */
+.section-subtitle {
+    font-size: var(--fs-base);
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    font-family: var(--font-mono);
+}
+
+
+/* ============================================================
+   BOTONES
+   Dos variantes: primario (relleno) y outline (solo borde).
+============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-size: var(--fs-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+/* Botón relleno con color de acento */
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+.btn-primary:hover {
+    background-color: transparent;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+/* Botón solo con borde */
+.btn-outline {
+    background-color: transparent;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+.btn-outline:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    transform: translateY(-2px);
+}
+
+/* Ocupa el 100% del ancho de su padre (usado en el form) */
+.btn-full { width: 100%; justify-content: center; }
+
+
+/* ============================================================
+   NAVBAR
+   Fija en la parte superior, transparente al inicio.
+   JS agrega .scrolled cuando el usuario baja más de 50px.
+============================================================ */
+.navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--navbar-height);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+/* Estado con fondo semiopaco + blur al hacer scroll */
+.navbar.scrolled {
+    background-color: rgba(10, 14, 26, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo: iniciales del nombre */
+.nav-logo {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: var(--color-text-heading);
+    letter-spacing: -0.5px;
+}
+
+/* Lista de links del menú desktop */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.nav-link {
+    font-size: var(--fs-sm);
+    font-family: var(--font-mono);
+    color: var(--color-text);
+    transition: var(--transition);
+    position: relative;
+}
+
+/* Línea de subrayado animada al hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-accent);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ── Hamburguesa (solo en móvil) ── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: var(--transition);
+}
+
+/* Animación de X al abrir el menú */
+.hamburger.open .bar:nth-child(1) { transform: rotate(45deg)  translate(5px, 5px); }
+.hamburger.open .bar:nth-child(2) { opacity: 0; }
+.hamburger.open .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+
+/* ============================================================
+   HERO — Sección principal
+============================================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: var(--navbar-height) var(--space-lg) 0;
+    text-align: center;
+}
+
+.hero-container { max-width: 800px; }
+
+.hero-greeting {
+    font-family: var(--font-mono);
+    font-size: var(--fs-lg);
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+}
+
+.hero-name {
+    font-size: var(--fs-5xl);
+    font-weight: 700;
+    color: var(--color-text-heading);
+    line-height: 1.1;
+    margin-bottom: var(--space-sm);
+}
+
+.hero-role {
+    font-size: var(--fs-3xl);
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    margin-bottom: var(--space-md);
+}
+
+/* El texto animado que escribe JS */
+.hero-role-dynamic {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+/* Cursor parpadeante del efecto typewriter */
+.cursor {
+    color: var(--color-accent);
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+.hero-description {
+    font-size: var(--fs-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.8;
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-xl);
+}
+
+/* Íconos de redes sociales */
+.hero-socials {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+}
+
+.social-link {
+    font-size: var(--fs-xl);
+    color: var(--color-text-secondary);
+    transition: var(--transition);
+}
+.social-link:hover {
+    color: var(--color-accent);
+    transform: translateY(-3px);
+}
+
+/* Flecha animada de "seguir scrolleando" */
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-accent);
+    font-size: var(--fs-xl);
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+
+/* ============================================================
+   SOBRE MÍ
+============================================================ */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-2xl);
+    align-items: center;
+}
+
+/* Wrapper con borde decorativo de degradado */
+.about-image-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+}
+.about-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: calc(var(--radius-lg) + 4px);
+    background: linear-gradient(135deg, var(--color-accent), transparent 60%);
+    z-index: -1;
+}
+
+.profile-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    filter: grayscale(20%);
+    transition: var(--transition);
+}
+.profile-img:hover { filter: grayscale(0%); }
+
+.about-description {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lg);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+}
+
+/* Tarjetas de estadísticas numéricas */
+.about-stats {
+    display: flex;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    flex: 1;
+    min-width: 90px;
+}
+
+.stat-number {
+    display: block;
+    font-size: var(--fs-3xl);
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.stat-label {
+    font-size: var(--fs-xs);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+}
+
+
+/* ============================================================
+   SKILLS
+============================================================ */
+.skills-group { margin-bottom: var(--space-2xl); }
+
+/* Título de grupo con barra de acento a la izquierda */
+.skills-group-title {
+    font-size: var(--fs-xl);
+    color: var(--color-text-heading);
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-sm);
+    border-left: 3px solid var(--color-accent);
+}
+
+/* Grid responsivo: rellena columnas automáticamente */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: var(--space-md);
+}
+
+.skill-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg) var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: default;
+    transition: var(--transition);
+}
+.skill-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+}
+
+.skill-name {
+    font-size: var(--fs-sm);
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+}
+
+
+/* ============================================================
+   PROYECTOS
+============================================================ */
+
+/* Filtros por categoría */
+.project-filters {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-xl);
+}
+
+.filter-btn {
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: var(--transition);
+}
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: var(--color-accent-dim);
+}
+
+/* Grid de cards de proyectos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-xl);
+}
+
+.project-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+}
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card);
+    border-color: var(--color-accent);
+}
+
+/* Área de imagen con overlay de links al hover */
+.project-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    background-color: var(--color-bg-secondary); /* Fallback si no hay imagen */
+}
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+/* Overlay oscuro con iconos de demo y código */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 14, 26, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    opacity: 0;
+    transition: var(--transition);
+}
+.project-card:hover .project-overlay { opacity: 1; }
+
+.project-link {
+    width: 44px; height: 44px;
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    font-size: var(--fs-lg);
+    transition: var(--transition);
+}
+.project-link:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+.project-info { padding: var(--space-lg); }
+
+.project-title {
+    font-size: var(--fs-xl);
+    color: var(--color-text-heading);
+    margin-bottom: var(--space-sm);
+}
+
+.project-description {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+/* Tags de tecnologías usadas */
+.project-tags {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    background-color: var(--color-accent-dim);
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+}
+
+
+/* ============================================================
+   CONTACTO
+============================================================ */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-2xl);
+    align-items: start;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.contact-icon {
+    font-size: var(--fs-xl);
+    color: var(--color-accent);
+    width: 20px;
+    flex-shrink: 0;
+}
+
+/* Punto verde de disponibilidad */
+.contact-icon.available {
+    color: #4caf50;
+    font-size: 0.65rem;
+}
+
+.contact-item h4 {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    margin-bottom: 2px;
+}
+
+.contact-item a { transition: var(--transition); }
+.contact-item a:hover { color: var(--color-accent); }
+
+.contact-socials {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+/* ── Formulario ── */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.form-group label {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-size: var(--fs-base);
+    transition: var(--transition);
+    resize: vertical; /* El textarea puede redimensionarse solo en vertical */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-dim);
+}
+
+/* Placeholder de los inputs */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+}
+
+/* Mensaje de error bajo cada campo — reserva espacio para no mover el layout */
+.form-error {
+    font-size: var(--fs-xs);
+    color: #ff6b6b;
+    font-family: var(--font-mono);
+    min-height: 16px;
+}
+
+/* Mensaje de éxito tras enviar el formulario */
+.form-success {
+    text-align: center;
+    color: var(--color-accent);
+    font-size: var(--fs-base);
+    padding: var(--space-sm);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    background-color: var(--color-accent-dim);
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer {
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-xl) 0;
+    text-align: center;
+}
+
+.footer-text {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.footer-year {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+}
+
+
+/* ============================================================
+   BOTÓN VOLVER ARRIBA
+   Oculto por defecto; JS agrega .visible cuando el usuario
+   baja más de 400px.
+============================================================ */
+.back-to-top {
+    position: fixed;
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+    width: 44px; height: 44px;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: var(--fs-base);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    /* Estado inicial: invisible y desplazado */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(100, 255, 218, 0.4);
+}
+
+
+/* ============================================================
+   ANIMACIÓN DE ENTRADA AL SCROLL
+   JS agrega .visible cuando el elemento entra al viewport.
+============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤ 900px)
+============================================================ */
+@media (max-width: 900px) {
+    /* About: de 2 columnas a 1 columna centrada */
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .about-image {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    .about-stats { justify-content: center; }
+
+    /* Contacto: de 2 columnas a 1 */
+    .contact-content { grid-template-columns: 1fr; }
+    .contact-socials  { justify-content: center; }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MÓVIL (≤ 600px)
+============================================================ */
+@media (max-width: 600px) {
+    /* Reduce tamaños de fuente en pantallas pequeñas */
+    :root {
+        --fs-5xl: 2.5rem;
+        --fs-3xl: 1.75rem;
+    }
+
+    /* Muestra hamburguesa, oculta menú horizontal */
+    .hamburger { display: flex; }
+
+    .nav-menu {
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0; right: 0;
+        background-color: rgba(10, 14, 26, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: var(--space-xl) var(--space-lg);
+        gap: var(--space-xl);
+        border-bottom: 1px solid var(--color-border);
+        /* Fuera de la pantalla por defecto */
+        transform: translateY(-110%);
+        transition: var(--transition);
+    }
+    /* JS agrega .open al abrir el menú */
+    .nav-menu.open { transform: translateY(0); }
+
+    /* Hero: botones en columna */
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Proyectos: 1 columna */
+    .projects-grid { grid-template-columns: 1fr; }
+
+    /* Back-to-top en esquina más cercana al borde */
+    .back-to-top {
+        bottom: var(--space-md);
+        right: var(--space-md);
+    }
+}

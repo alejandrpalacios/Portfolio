@@ -1,11 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Portafolio de Alejandro Palacios - Developer">
+    <title>Alejandro Palacios | Developer</title>
+
+    <!-- Google Fonts: Inter para texto, Fira Code para monospace -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para íconos de tecnologías y UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+
+    <!-- ============================================================
+         NAVEGACIÓN
+         Barra fija en la parte superior. Se vuelve opaca al hacer
+         scroll (clase .scrolled agregada desde JS).
+    ============================================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+
+            <!-- Logo: iniciales del nombre -->
+            <a href="#hero" class="nav-logo">AP<span class="accent">.</span></a>
+
+            <!-- Links de sección (desktop) -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about"    class="nav-link">Sobre mí</a></li>
+                <li><a href="#skills"   class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Proyectos</a></li>
+                <li><a href="#contact"  class="nav-link">Contacto</a></li>
+            </ul>
+
+            <!-- Botón hamburguesa visible solo en móvil -->
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+        </div>
+    </nav>
+
+
+    <!-- ============================================================
+         HERO — Primera pantalla
+         Nombre, rol animado (typewriter desde JS) y CTAs.
+    ============================================================ -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+
+            <p class="hero-greeting">Hola, soy</p>
+            <h1 class="hero-name">Alejandro Palacios</h1>
+
+            <!-- El rol cambia animadamente; el texto dinámico lo escribe JS -->
+            <h2 class="hero-role">
+                <span class="hero-role-static">Soy </span>
+                <span class="hero-role-dynamic" id="dynamicRole"></span>
+                <span class="cursor" aria-hidden="true">|</span>
+            </h2>
+
+            <p class="hero-description">
+                Apasionado por crear experiencias digitales modernas,
+                funcionales y con buen diseño.
+            </p>
+
+            <!-- Botones de llamada a la acción -->
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+                <a href="#contact"  class="btn btn-outline">Contactarme</a>
+            </div>
+
+            <!-- Links a redes sociales — reemplaza href="#" con tus URLs reales -->
+            <div class="hero-socials">
+                <a href="#" class="social-link" aria-label="GitHub"   target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link" aria-label="Twitter"  target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+            </div>
+
+        </div>
+
+        <!-- Flecha animada que invita a seguir scrolleando -->
+        <a href="#about" class="scroll-indicator" aria-label="Ir a Sobre mí">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+
+    <!-- ============================================================
+         SOBRE MÍ
+         Foto de perfil + descripción personal + estadísticas rápidas.
+    ============================================================ -->
+    <section id="about" class="about section">
+        <div class="container">
+
+            <h2 class="section-title">Sobre <span class="accent">mí</span></h2>
+            <p class="section-subtitle">Conóceme un poco más</p>
+
+            <div class="about-content reveal">
+
+                <!-- Foto — reemplaza assets/images/profile.jpg con tu foto real -->
+                <div class="about-image">
+                    <div class="about-image-wrapper">
+                        <img
+                            src="assets/images/profile.jpg"
+                            alt="Foto de Alejandro Palacios"
+                            class="profile-img"
+                        >
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <!-- Párrafos de descripción — edítalos con tu info real -->
+                    <p class="about-description">
+                        Soy un desarrollador con pasión por construir soluciones web modernas
+                        y eficientes. Me enfoco en escribir código limpio, aprender
+                        constantemente y colaborar en proyectos que generen impacto real.
+                    </p>
+                    <p class="about-description">
+                        Cuando no estoy programando, disfruto [agrega tu hobby aquí].
+                    </p>
+
+                    <!-- Estadísticas rápidas: tarjetas numéricas -->
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">+10</span>
+                            <span class="stat-label">Proyectos</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">2+</span>
+                            <span class="stat-label">Años exp.</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Aprendizaje</span>
+                        </div>
+                    </div>
+
+                    <!-- Botón CV — reemplaza assets/cv.pdf con el archivo real -->
+                    <a href="assets/cv.pdf" download class="btn btn-primary">
+                        <i class="fas fa-download"></i> Descargar CV
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         SKILLS — Tecnologías y herramientas
+         Organizadas en tres grupos: Frontend, Backend y Herramientas.
+         Agrega o quita .skill-card según tus tecnologías reales.
+    ============================================================ -->
+    <section id="skills" class="skills section">
+        <div class="container">
+
+            <h2 class="section-title">Mis <span class="accent">Skills</span></h2>
+            <p class="section-subtitle">Tecnologías con las que trabajo</p>
+
+            <!-- FRONTEND -->
+            <div class="skills-group reveal">
+                <h3 class="skills-group-title">Frontend</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-html5 skill-icon"></i>
+                        <span class="skill-name">HTML5</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-css3-alt skill-icon"></i>
+                        <span class="skill-name">CSS3</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-js-square skill-icon"></i>
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <!-- Agrega más cards aquí siguiendo el mismo patrón -->
+                </div>
+            </div>
+
+            <!-- BACKEND -->
+            <div class="skills-group reveal">
+                <h3 class="skills-group-title">Backend</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-node-js skill-icon"></i>
+                        <span class="skill-name">Node.js</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-python skill-icon"></i>
+                        <span class="skill-name">Python</span>
+                    </div>
+                    <!-- Agrega más cards aquí -->
+                </div>
+            </div>
+
+            <!-- HERRAMIENTAS -->
+            <div class="skills-group reveal">
+                <h3 class="skills-group-title">Herramientas</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fab fa-git-alt skill-icon"></i>
+                        <span class="skill-name">Git</span>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fab fa-github skill-icon"></i>
+                        <span class="skill-name">GitHub</span>
+                    </div>
+                    <!-- Agrega más cards aquí -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PROYECTOS
+         Cards con imagen, descripción, tags y links a demo/código.
+         Cada card tiene data-category para el filtro de JS.
+    ============================================================ -->
+    <section id="projects" class="projects section">
+        <div class="container">
+
+            <h2 class="section-title">Mis <span class="accent">Proyectos</span></h2>
+            <p class="section-subtitle">Algunos trabajos que he desarrollado</p>
+
+            <!-- Filtros por categoría -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Móvil</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+            </div>
+
+            <!-- Grid de cards — agrega o duplica <article> para más proyectos -->
+            <div class="projects-grid reveal" id="projectsGrid">
+
+                <!-- PROYECTO 1 -->
+                <article class="project-card" data-category="web">
+                    <div class="project-image">
+                        <!-- Reemplaza con captura real del proyecto -->
+                        <img src="assets/images/project1.jpg" alt="Proyecto 1">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener" aria-label="Ver demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener" aria-label="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Nombre del Proyecto</h3>
+                        <p class="project-description">
+                            Descripción breve del proyecto. Qué problema resuelve
+                            y qué aprendiste desarrollándolo.
+                        </p>
+                        <ul class="project-tags">
+                            <li class="tag">HTML</li>
+                            <li class="tag">CSS</li>
+                            <li class="tag">JavaScript</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 2 -->
+                <article class="project-card" data-category="backend">
+                    <div class="project-image">
+                        <img src="assets/images/project2.jpg" alt="Proyecto 2">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener" aria-label="Ver demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener" aria-label="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Nombre del Proyecto 2</h3>
+                        <p class="project-description">
+                            Descripción breve del proyecto. Qué problema resuelve
+                            y qué aprendiste desarrollándolo.
+                        </p>
+                        <ul class="project-tags">
+                            <li class="tag">Node.js</li>
+                            <li class="tag">MongoDB</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 3 -->
+                <article class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="assets/images/project3.jpg" alt="Proyecto 3">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener" aria-label="Ver demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener" aria-label="Ver código">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Nombre del Proyecto 3</h3>
+                        <p class="project-description">
+                            Descripción breve del proyecto. Qué problema resuelve
+                            y qué aprendiste desarrollándolo.
+                        </p>
+                        <ul class="project-tags">
+                            <li class="tag">React</li>
+                            <li class="tag">API REST</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div><!-- /projects-grid -->
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         CONTACTO
+         Info de contacto directo + formulario con validación en JS.
+    ============================================================ -->
+    <section id="contact" class="contact section">
+        <div class="container">
+
+            <h2 class="section-title">¿Hablamos?</h2>
+            <p class="section-subtitle">Estoy disponible para proyectos y oportunidades</p>
+
+            <div class="contact-content reveal">
+
+                <!-- Info directa de contacto -->
+                <div class="contact-info">
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <!-- Reemplaza con tu email real -->
+                            <a href="mailto:tu@email.com">tu@email.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <!-- Reemplaza con tu ciudad/país -->
+                            <p>Tu Ciudad, País</p>
+                        </div>
+                    </div>
+
+                    <!-- Punto verde de disponibilidad -->
+                    <div class="contact-item">
+                        <i class="fas fa-circle contact-icon available"></i>
+                        <div>
+                            <h4>Disponibilidad</h4>
+                            <p>Disponible para proyectos</p>
+                        </div>
+                    </div>
+
+                    <!-- Redes sociales — reemplaza href="#" con tus URLs reales -->
+                    <div class="contact-socials">
+                        <a href="#" class="social-link" aria-label="GitHub"   target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    </div>
+
+                </div>
+
+                <!-- Formulario de contacto con validación del lado del cliente -->
+                <form class="contact-form" id="contactForm" novalidate>
+
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text"  id="name"    name="name"    placeholder="Tu nombre"       required autocomplete="name">
+                        <span class="form-error" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email"   name="email"   placeholder="tu@email.com"    required autocomplete="email">
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text"  id="subject" name="subject"  placeholder="¿En qué te puedo ayudar?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+                        <span class="form-error" id="messageError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-paper-plane"></i> Enviar mensaje
+                    </button>
+
+                    <!-- Mensaje de éxito; JS lo muestra/oculta con el atributo hidden -->
+                    <div class="form-success" id="formSuccess" hidden>
+                        <i class="fas fa-check-circle"></i> ¡Mensaje enviado correctamente!
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Diseñado y desarrollado por
+                <span class="accent">Alejandro Palacios</span>
+            </p>
+            <!-- El año lo inyecta JS automáticamente -->
+            <p class="footer-year">© <span id="year"></span> Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+
+    <!-- ============================================================
+         BOTÓN "VOLVER ARRIBA"
+         Se hace visible solo cuando el usuario baja más de 400px (JS).
+    ============================================================ -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <!-- Script al final del body para no bloquear el renderizado -->
+    <script src="js/main.js"></script>
+
 </body>
 </html>
