@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandro Palacios Mendez – CV (EN)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; font-size: 10pt; color: #222; background: #d0d0d0; display: flex; justify-content: center; padding: 30px 0; }
+        .page { width: 210mm; min-height: 297mm; background: #fff; padding: 18mm 16mm 16mm 16mm; position: relative; box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+        .yellow-bar { position: absolute; top: 0; right: 0; width: 14px; height: 100%; background: #F0B429; }
+        header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 14px; border-bottom: 1px solid #ddd; margin-bottom: 16px; }
+        .h-name { font-size: 24pt; font-weight: bold; color: #111; line-height: 1.15; }
+        .h-tagline { font-size: 7.5pt; letter-spacing: 2px; color: #F0B429; font-weight: bold; text-transform: uppercase; margin-top: 7px; }
+        .h-contact { text-align: right; font-size: 8.5pt; color: #444; line-height: 1.9; }
+        .h-contact a { color: #444; text-decoration: none; }
+        .contact-row { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+        .contact-row i { color: #F0B429; font-size: 9pt; width: 12px; text-align: center; }
+        .s-title { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .s-dot { width: 20px; height: 20px; background: #F0B429; border-radius: 50%; flex-shrink: 0; }
+        .s-label { font-size: 11pt; font-weight: bold; color: #111; }
+        .summary { margin-bottom: 18px; }
+        .summary p { font-size: 9.5pt; color: #444; line-height: 1.65; }
+        .columns { display: grid; grid-template-columns: 34% 1fr; gap: 18px 22px; align-items: start; }
+        .left-section { margin-bottom: 18px; }
+        .skill-item { display: flex; align-items: center; gap: 7px; font-size: 9pt; color: #444; padding: 2px 0; }
+        .skill-item::before { content: ''; width: 5px; height: 5px; background: #F0B429; border-radius: 50%; flex-shrink: 0; }
+        .edu-name { font-weight: bold; font-size: 9.5pt; color: #111; }
+        .edu-sub { font-size: 8.5pt; color: #666; margin-top: 2px; line-height: 1.5; }
+        .lang-item { display: flex; align-items: center; gap: 7px; font-size: 9pt; color: #444; padding: 2px 0; }
+        .lang-item::before { content: ''; width: 5px; height: 5px; background: #F0B429; border-radius: 50%; flex-shrink: 0; }
+        .right-section { margin-bottom: 18px; }
+        .work-title { font-weight: bold; font-size: 9.5pt; color: #111; }
+        .work-sub { font-size: 8.5pt; color: #666; margin-bottom: 5px; margin-top: 1px; }
+        .work-entry ul { padding-left: 14px; }
+        .work-entry ul li { font-size: 9pt; color: #444; margin-bottom: 3px; line-height: 1.5; }
+        .work-entry ul li::marker { color: #F0B429; }
+        .skill-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 4px; }
+        .lang-table { display: grid; grid-template-columns: auto 1fr; column-gap: 8px; align-items: center; }
+        .lang-level { font-size: 9pt; color: #444; padding: 2px 0; }
+        .cv-nav { position: fixed; top: 0; left: 0; right: 0; background: #1a2232; display: flex; gap: 10px; padding: 8px 16px; z-index: 9999; }
+        .cv-nav a, .cv-nav button { color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.25); padding: 5px 14px; font-size: 8.5pt; cursor: pointer; text-decoration: none; font-family: Arial, sans-serif; border-radius: 2px; }
+        .cv-nav a:hover, .cv-nav button:hover { background: rgba(255,255,255,0.12); }
+        @media screen { body { padding-top: 46px; } }
+        @media print {
+            .cv-nav { display: none !important; }
+            body { background: #fff; padding: 0; }
+            .page { box-shadow: none; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="cv-nav">
+    <a href="index.html">← Back</a>
+    <button onclick="window.print()">⬇ Download PDF</button>
+</div>
+
+<div class="page">
+    <div class="yellow-bar"></div>
+
+    <header>
+        <div>
+            <div class="h-name">Alejandro<br>Palacios Mendez</div>
+            <div class="h-tagline">Front-end developer · Freelance · Always learning.</div>
+        </div>
+        <div class="h-contact">
+            <div class="contact-row"><span>Meudon, France</span><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-row"><span>+33 9 99 29 22 52</span><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <div class="contact-row"><a href="mailto:alepalaciome@gmail.com">alepalaciome@gmail.com</a><i class="fa-brands fa-google"></i></div>
+            <div class="contact-row"><a href="https://www.linkedin.com/in/alepalaciome-frontend/" target="_blank">alepalaciome-frontend</a><i class="fa-brands fa-linkedin-in"></i></div>
+        </div>
+    </header>
+
+    <div class="summary">
+        <div class="s-title"><div class="s-dot"></div><span class="s-label">Summary</span></div>
+        <p>Front-end web developer with 15 weeks of internship experience, I offer my freelance services to create websites, landing pages, and modern interfaces while continuing my studies. I commit to any type of project, regardless of difficulty, always with dedication and quality.</p>
+    </div>
+
+    <div class="columns">
+
+        <div class="left-section">
+            <div class="s-title"><div class="s-dot"></div><span class="s-label">Skills</span></div>
+            <div class="skill-grid">
+                <div class="skill-item">HTML5 &amp; CSS3</div>
+                <div class="skill-item">JavaScript (ES6+)</div>
+                <div class="skill-item">React</div>
+                <div class="skill-item">Tailwind CSS</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Linux / Windows</div>
+                <div class="skill-item">Network config.</div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="s-title"><div class="s-dot"></div><span class="s-label">Work History</span></div>
+            <div class="work-entry">
+                <div class="work-title">Web Development Intern &nbsp;–&nbsp; Freelance Juan Trochez</div>
+                <div class="work-sub">Sèvres, France &nbsp;·&nbsp; 15 weeks cumulated</div>
+                <ul>
+                    <li>Built web interfaces using HTML5, CSS3 and JavaScript, including API integration</li>
+                    <li>Developed dynamic front-end features and maintained code quality</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="left-section">
+            <div class="s-title"><div class="s-dot"></div><span class="s-label">Education</span></div>
+            <div class="edu-name">Vocational Baccalaureate CIEL</div>
+            <div class="edu-sub">
+                Cybersecurity, Computer Networks<br>&amp; Electronics<br>
+                Lycée de l'Observatoire, Meudon<br>
+                2023 – 2026
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="s-title"><div class="s-dot"></div><span class="s-label">Personal Skills</span></div>
+            <div class="skill-grid" style="grid-template-columns: 1fr;">
+                <div class="skill-item">Curious &amp; self-driven</div>
+                <div class="skill-item">Fast learner</div>
+                <div class="skill-item">Adaptable</div>
+            </div>
+        </div>
+
+        <div class="left-section">
+            <div class="s-title"><div class="s-dot"></div><span class="s-label">Languages</span></div>
+            <div class="lang-table">
+                <div class="lang-item"><strong>Spanish</strong></div><div class="lang-level">Native</div>
+                <div class="lang-item"><strong>French</strong></div><div class="lang-level">Fluent</div>
+                <div class="lang-item"><strong>English</strong></div><div class="lang-level">Basic</div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="s-title"><div class="s-dot"></div><span class="s-label">Services</span></div>
+            <div class="skill-grid" style="grid-template-columns: 1fr;">
+                <div class="skill-item">Landing pages</div>
+                <div class="skill-item">Online store</div>
+                <div class="skill-item">Dashboard / admin panel</div>
+                <div class="skill-item">Portfolio / personal website</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -43,7 +43,8 @@ const translations = {
         about_stat_projects: 'Projects',
         about_stat_years:    'Years exp.',
         about_stat_learning: 'Learning',
-        about_cv: 'Download CV',
+        about_cv:  'View CV',
+        cv_url:    'cv-design-en.html',
 
         // Skills
         skills_title_main:   'My',
@@ -120,7 +121,8 @@ const translations = {
         about_stat_projects: 'Proyectos',
         about_stat_years:    'Años exp.',
         about_stat_learning: 'Aprendizaje',
-        about_cv: 'Descargar CV',
+        about_cv:  'Ver CV',
+        cv_url:    'cv-design-es.html',
 
         skills_title_main:   'Mis',
         skills_title_accent: 'Skills',
@@ -192,7 +194,8 @@ const translations = {
         about_stat_projects: 'Projets',
         about_stat_years:    "Ans d'exp.",
         about_stat_learning: 'Apprentissage',
-        about_cv: 'Télécharger CV',
+        about_cv:  'Voir CV',
+        cv_url:    'cv-design.html',
 
         skills_title_main:   'Mes',
         skills_title_accent: 'compétences',
@@ -281,6 +284,14 @@ function applyLanguage(lang) {
         const key = el.dataset.i18nPlaceholder;
         if (t[key] !== undefined) {
             el.placeholder = t[key];
+        }
+    });
+
+    // Actualiza atributos href con data-i18n-href (ej: botón de CV)
+    document.querySelectorAll('[data-i18n-href]').forEach(el => {
+        const key = el.dataset.i18nHref;
+        if (t[key] !== undefined) {
+            el.href = t[key];
         }
     });
 
