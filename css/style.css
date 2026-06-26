@@ -863,38 +863,42 @@ button { font-family: var(--font-main); }
 
 
 /* ============================================================
+   RESPONSIVE — TABLET GRANDE (≤ 1024px)
+============================================================ */
+@media (max-width: 1024px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+/* ============================================================
    RESPONSIVE — TABLET (≤ 900px)
 ============================================================ */
 @media (max-width: 900px) {
-    /* About: de 2 columnas a 1 columna centrada */
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    .about-image {
-        max-width: 280px;
-        margin: 0 auto;
-    }
-    .about-stats { justify-content: center; }
+    .about-image { max-width: 280px; margin: 0 auto; }
+    .about-stats  { justify-content: center; }
 
-    /* Proyectos: 2 columnas en tablet */
-    .projects-grid { grid-template-columns: repeat(2, 1fr); }
-
-    /* Contacto: de 2 columnas a 1 */
     .contact-content { grid-template-columns: 1fr; }
     .contact-socials  { justify-content: center; }
 }
 
 
 /* ============================================================
-   RESPONSIVE — MÓVIL (≤ 600px)
+   RESPONSIVE — TABLET PEQUEÑA / MÓVIL GRANDE (≤ 768px)
+   Activa el menú hamburguesa.
 ============================================================ */
-@media (max-width: 600px) {
-    /* Reduce tamaños de fuente en pantallas pequeñas */
+@media (max-width: 768px) {
     :root {
-        --fs-5xl: 2.5rem;
+        --fs-5xl: 2.8rem;
         --fs-3xl: 1.75rem;
+        --space-2xl: 3.5rem;
     }
+
+    .section-title    { font-size: var(--fs-2xl); }
+    .section-subtitle { margin-bottom: var(--space-xl); }
 
     /* Muestra hamburguesa, oculta menú horizontal */
     .hamburger { display: flex; }
@@ -906,29 +910,66 @@ button { font-family: var(--font-main); }
         background-color: rgba(10, 14, 26, 0.98);
         backdrop-filter: blur(10px);
         flex-direction: column;
+        align-items: center;
         padding: var(--space-xl) var(--space-lg);
         gap: var(--space-xl);
         border-bottom: 1px solid var(--color-border);
-        /* Fuera de la pantalla por defecto */
         transform: translateY(-110%);
         transition: var(--transition);
+        z-index: 999;
     }
-    /* JS agrega .open al abrir el menú */
     .nav-menu.open { transform: translateY(0); }
 
-    /* Hero: botones en columna */
     .hero-cta {
         flex-direction: column;
         align-items: center;
     }
+    .hero-cta .btn { width: 100%; max-width: 280px; justify-content: center; }
 
-    /* Proyectos: 1 columna en móvil */
-    .projects-grid { grid-template-columns: 1fr; }
+    .back-to-top { bottom: var(--space-md); right: var(--space-md); }
+}
 
 
-    /* Back-to-top en esquina más cercana al borde */
-    .back-to-top {
-        bottom: var(--space-md);
-        right: var(--space-md);
+/* ============================================================
+   RESPONSIVE — MÓVIL (≤ 480px)
+============================================================ */
+@media (max-width: 480px) {
+    :root {
+        --fs-5xl: 2.2rem;
+        --fs-3xl: 1.5rem;
+        --space-2xl: 3rem;
+        --space-xl:  2rem;
     }
+
+    .container { padding: 0 var(--space-sm); }
+
+    /* Navbar */
+    .nav-logo    { font-size: var(--fs-xl); }
+    .lang-btn    { padding: 3px 6px; font-size: 0.65rem; }
+
+    /* Hero */
+    .hero        { padding-top: var(--navbar-height); }
+    .hero-name   { font-size: 2.1rem; line-height: 1.2; }
+    .hero-role   { font-size: var(--fs-xl); }
+    .hero-description { font-size: var(--fs-base); }
+
+    /* About */
+    .about-stats      { flex-direction: column; }
+    .stat-card        { padding: var(--space-sm) var(--space-md); }
+
+    /* Skills */
+    .skills-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-sm); }
+    .skill-card  { padding: var(--space-sm) var(--space-xs); }
+    .skill-icon  { font-size: 2rem; }
+
+    /* Proyectos */
+    .projects-grid   { grid-template-columns: 1fr; }
+    .project-filters { gap: var(--space-xs); }
+    .filter-btn      { padding: 0.35rem 0.9rem; font-size: var(--fs-xs); }
+
+    /* Contacto */
+    .contact-item { gap: var(--space-sm); }
+
+    /* Back-to-top */
+    .back-to-top { width: 38px; height: 38px; font-size: var(--fs-sm); }
 }
