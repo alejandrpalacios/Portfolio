@@ -585,10 +585,10 @@ button { font-family: var(--font-main); }
     background-color: var(--color-accent-dim);
 }
 
-/* Grid de cards de proyectos — 4 columnas fijas en desktop */
+/* Grid de cards de proyectos — 2 columnas en desktop */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
 }
 
@@ -609,7 +609,7 @@ button { font-family: var(--font-main); }
 .project-image {
     position: relative;
     overflow: hidden;
-    height: 220px;
+    height: 280px;
     background-color: var(--color-bg-secondary); /* Fallback si no hay imagen */
 }
 .project-image img {
@@ -886,8 +886,7 @@ button { font-family: var(--font-main); }
    RESPONSIVE — LAPTOP / TABLET GRANDE (≤ 1024px)
 ============================================================ */
 @media (max-width: 1024px) {
-    .projects-grid { grid-template-columns: repeat(2, 1fr); }
-    .project-image { height: 200px; }
+    .project-image { height: 240px; }
 }
 
 /* ============================================================
