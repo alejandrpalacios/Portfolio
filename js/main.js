@@ -258,7 +258,7 @@ contactForm.addEventListener('submit', (e) => {
         submitBtn.disabled  = true;
         btnSpan.textContent = t2.contact_sending || 'Sending...';
 
-        fetch('https://formspree.io/f/xjgqyeqb', {
+        fetch('https://api.web3forms.com/submit', {
             method:  'POST',
             body:    new FormData(contactForm),
             headers: { 'Accept': 'application/json' }
