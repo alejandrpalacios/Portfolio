@@ -545,6 +545,19 @@ button { font-family: var(--font-main); }
    PROYECTOS
 ============================================================ */
 
+/* Párrafo introductorio de la sección proyectos */
+.projects-intro {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-base);
+    max-width: 720px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.8;
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-md);
+    text-align: left;
+}
+
 /* Filtros por categoría */
 .project-filters {
     display: flex;
