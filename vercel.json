@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/taskflow", "destination": "https://personals-projects-phi.vercel.app/taskflow" },
+    { "source": "/taskflow/:path*", "destination": "https://personals-projects-phi.vercel.app/taskflow/:path*" },
+
+    { "source": "/lumiere", "destination": "https://personals-project-chi.vercel.app/lumiere" },
+    { "source": "/lumiere/:path*", "destination": "https://personals-project-chi.vercel.app/lumiere/:path*" },
+
+    { "source": "/console", "destination": "https://personal-projects-umber.vercel.app/console" },
+    { "source": "/console/:path*", "destination": "https://personal-projects-umber.vercel.app/console/:path*" },
+
+    { "source": "/nidohomes", "destination": "https://personals-projec.vercel.app/nidohomes" },
+    { "source": "/nidohomes/:path*", "destination": "https://personals-projec.vercel.app/nidohomes/:path*" }
+  ]
+}
