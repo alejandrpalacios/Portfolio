@@ -14,6 +14,10 @@
 
     { "source": "/nidohomes", "destination": "https://personals-projec.vercel.app/nidohomes" },
     { "source": "/nidohomes/", "destination": "https://personals-projec.vercel.app/nidohomes/" },
-    { "source": "/nidohomes/:path*", "destination": "https://personals-projec.vercel.app/nidohomes/:path*" }
+    { "source": "/nidohomes/:path*", "destination": "https://personals-projec.vercel.app/nidohomes/:path*" },
+
+    { "source": "/snip", "destination": "https://snip-amber.vercel.app/snip" },
+    { "source": "/snip/", "destination": "https://snip-amber.vercel.app/snip/" },
+    { "source": "/snip/:path*", "destination": "https://snip-amber.vercel.app/snip/:path*" }
   ]
 }
