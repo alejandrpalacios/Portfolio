@@ -18,6 +18,10 @@
 
     { "source": "/snip", "destination": "https://snip-amber.vercel.app/snip" },
     { "source": "/snip/", "destination": "https://snip-amber.vercel.app/snip/" },
-    { "source": "/snip/:path*", "destination": "https://snip-amber.vercel.app/snip/:path*" }
+    { "source": "/snip/:path*", "destination": "https://snip-amber.vercel.app/snip/:path*" },
+
+    { "source": "/pulse", "destination": "https://pulse-psi-weld-23.vercel.app/pulse" },
+    { "source": "/pulse/", "destination": "https://pulse-psi-weld-23.vercel.app/pulse/" },
+    { "source": "/pulse/:path*", "destination": "https://pulse-psi-weld-23.vercel.app/pulse/:path*" }
   ]
 }
